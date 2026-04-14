@@ -1,0 +1,99 @@
+:root {
+    --bg-dark: #f5f5f5;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a1a;
+    --text-secondary: #555555;
+    --accent: #3d7ad6;
+    --accent-hover: #2563c7;
+    --github-black: #24292e;
+}
+
+body {
+    width: 280px;
+    margin: 0;
+    padding: 20px;
+    background-color: var(--bg-dark);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 1.4rem;
+    margin: 0;
+    font-weight: 600;
+}
+
+.version {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    background: rgba(0, 0, 0, 0.08);
+    padding: 2px 8px;
+    border-radius: 12px;
+    margin-top: 4px;
+    display: inline-block;
+}
+
+.description {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 0 0 25px 0;
+}
+
+.actions {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.2s ease;
+    gap: 10px;
+}
+
+.github-btn {
+    background-color: var(--github-black);
+    color: white;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.github-btn:hover {
+    background-color: #2f363d;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+footer {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+}

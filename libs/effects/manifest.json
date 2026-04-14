@@ -1,0 +1,26 @@
+{
+  "gunkshot": {
+    "hasBackground": false
+  },
+  "hydropump": {
+    "hasBackground": false
+  },
+  "moonblast": {
+    "hasBackground": true
+  },
+  "mysticalfire": {
+    "hasBackground": false
+  },
+  "psychic": {
+    "hasBackground": false
+  },
+  "shadowball": {
+    "hasBackground": false
+  },
+  "swordsdance": {
+    "hasBackground": false
+  },
+  "willowisp": {
+    "hasBackground": false
+  }
+}
