@@ -19,7 +19,7 @@ A browser extension that adds custom visual effects to **single battles** on [Po
 - Shadow Ball
 - Swords Dance
 - Will-O-Wisp
-- More upcoming...
+More upcoming...
 
 ## Install on Chromium (Chrome, Edge, Brave...)
 

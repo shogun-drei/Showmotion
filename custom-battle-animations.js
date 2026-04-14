@@ -10,27 +10,37 @@
         return !!document.hidden || !!window.pksEffekseer?.isSuspended?.();
     }
 
-    function getSelfEffectTransform(sprite, battle) {
-        const isFoe = (battle?.farSide) ? (sprite?.side?.n === battle.farSide.n) : (sprite?.side?.n === 1);
+    function isFrontRenderFacing(subject) {
+        if (typeof subject?.isFrontSprite === 'boolean') {
+            return subject.isFrontSprite;
+        }
+        if (typeof subject?.sprite?.isFrontSprite === 'boolean') {
+            return subject.sprite.isFrontSprite;
+        }
+        if (typeof subject?.side?.isFar === 'boolean') {
+            return subject.side.isFar;
+        }
+        return false;
+    }
+
+    function getSelfEffectTransform(sprite) {
         return {
             pos: [0, 0, 0],
-            rot: isFoe ? [0, 180, 0] : [0, 0, 0],
+            rot: isFrontRenderFacing(sprite) ? [0, 180, 0] : [0, 0, 0],
         };
     }
 
-    function getAttackEffectTransform(attacker, battle) {
-        const isFoe = (battle?.farSide) ? (attacker?.side?.n === battle.farSide.n) : (attacker?.side?.n === 1);
+    function getAttackEffectTransform(attacker) {
         return {
             pos: [0, 0, 0],
-            rot: isFoe ? [0, 180, 0] : [0, 0, 0],
+            rot: isFrontRenderFacing(attacker) ? [0, 180, 0] : [0, 0, 0],
         };
     }
 
-    function getSummonEffectTransform(pokemon, battle) {
-        const isFoe = (battle?.farSide) ? (pokemon?.side?.n === battle.farSide.n) : (pokemon?.side?.n === 1);
+    function getSummonEffectTransform(pokemon) {
         return {
             pos: [0, 0, 0],
-            rot: isFoe ? [0, 180, 0] : [0, 0, 0],
+            rot: isFrontRenderFacing(pokemon) ? [0, 180, 0] : [0, 0, 0],
         };
     }
 
@@ -43,7 +53,7 @@
             clearTimeout(sprite._pksLandTimer);
         }
 
-        const { pos, rot } = getSummonEffectTransform(pokemon, scene.battle);
+        const { pos, rot } = getSummonEffectTransform(pokemon);
         const timerId = setTimeout(() => {
             if (!window.pksCustomBattleAnimations?.isEnabled()) return;
             if (areCustomAnimationsSuspended()) return;
@@ -114,7 +124,7 @@
     const customMoveAnims = {
         swordsdance: {
             anim(scene, [attacker]) {
-                const { pos, rot } = getSelfEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getSelfEffectTransform(attacker);
                 scene.backgroundEffect('#FFCC66', 600, 0.3);
                 if (window.BattleOtherAnims?.shake) {
                     window.BattleOtherAnims.shake.anim(scene, [attacker]);
@@ -124,7 +134,7 @@
         },
         moonblast: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 attacker.anim({
                     z: attacker.behind(-8),
                     time: 150,
@@ -146,7 +156,7 @@
         },
         mysticalfire: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 attacker.anim({
                     z: attacker.behind(-8),
                     time: 150,
@@ -175,7 +185,7 @@
         },
         shadowball: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 attacker.delay(400);
                 attacker.anim({
                     z: attacker.behind(-8),
@@ -198,7 +208,7 @@
         },
         willowisp: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 scene.backgroundEffect('#440066', 800, 0.4);
                 attacker.anim({
                     z: attacker.behind(-5),
@@ -220,7 +230,7 @@
         },
         psychic: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 scene.backgroundEffect('#FFDDFF', 1000, 0.4);
                 attacker.anim({
                     z: attacker.behind(-10),
@@ -251,7 +261,7 @@
         },
         hydropump: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 scene.backgroundEffect('#0000DD', 1000, 0.2);
                 attacker.anim({
                     z: attacker.behind(-5),
@@ -281,7 +291,7 @@
         },
         gunkshot: {
             anim(scene, [attacker, defender]) {
-                const { pos, rot } = getAttackEffectTransform(attacker, scene.battle);
+                const { pos, rot } = getAttackEffectTransform(attacker);
                 scene.backgroundEffect('#442244', 800, 0.4);
                 attacker.anim({
                     z: attacker.behind(-10),
@@ -349,13 +359,7 @@
             const customAnim = moves ? moves[moveid] : null;
 
             if (customAnim && typeof customAnim.anim === 'function') {
-                const sprites = participants.map((p) => {
-                    const sprite = p.sprite;
-                    if (sprite) {
-                        sprite.side = p.side;
-                    }
-                    return sprite;
-                });
+                const sprites = participants.map((p) => p?.sprite || null);
                 customAnim.anim(this, sprites);
                 return;
             }
