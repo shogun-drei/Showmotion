@@ -26,7 +26,7 @@ A browser extension that adds custom visual effects to single battles on [Pokemo
 1. Download the latest `.zip` from the [Releases](../../releases) page
 2. Extract the `.zip` to a folder on your computer
 3. Open `chrome://extensions`
-4. Enable `Developer mode`
+4. Enable `Developer mode` (top right corner in Chrome)
 5. Click `Load unpacked`
 6. Select the `extension/` folder from the extracted files
 7. Open `https://play.pokemonshowdown.com/`
