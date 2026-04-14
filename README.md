@@ -7,8 +7,7 @@
 
 ## Introduction
 
-A browser extension that adds custom visual effects to **single battles** on [Pokémon Showdown](https://play.pokemonshowdown.com/). (Currently not supported in doubles/multi-battles).
-
+A browser extension that adds custom visual effects to **single battles** on [Pokémon Showdown](https://play.pokemonshowdown.com/).
 ## Available effects
 
 - Gunk Shot
