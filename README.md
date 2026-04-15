@@ -30,6 +30,7 @@ A browser extension that adds custom visual effects to **single battles** on [Po
 6. Select the `extension/` folder from the extracted files
 7. Open `https://play.pokemonshowdown.com/`
 
+
 ## Support
 Showmotion is completely free. If you'd like to support the creation of new animations and the future of this project, it's greatly appreciated:
 [![Patreon](https://img.shields.io/badge/Support%20on-Patreon-orange?style=for-the-badge&logo=patreon)](https://www.patreon.com/cw/shogun_drei)
