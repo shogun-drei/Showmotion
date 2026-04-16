@@ -27,7 +27,7 @@ A browser extension that adds custom visual effects to **single battles** on [Po
 3. Open `chrome://extensions`
 4. Enable `Developer mode` (top right corner in Chrome)
 5. Click `Load unpacked`
-6. Select the `extension/` folder from the extracted files
+6. Select the `Showmotion/` folder from the extracted files
 7. Open `https://play.pokemonshowdown.com/`
 
 
