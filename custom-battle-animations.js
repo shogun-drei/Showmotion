@@ -322,7 +322,7 @@
         flowertrick: {
             anim(scene, [attacker, defender]) {
                 const { pos, rot } = getAttackEffectTransform(attacker);
-                scene.backgroundEffect('#6BBF59', 800, 0.25);
+                scene.backgroundEffect('#000000', 800, 0.5);
                 attacker.anim({
                     z: attacker.behind(-8),
                     time: 140,
