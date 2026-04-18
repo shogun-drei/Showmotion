@@ -10,6 +10,7 @@
 A browser extension that adds custom visual effects to **single battles** on [Pokémon Showdown](https://play.pokemonshowdown.com/).
 ## Available effects
 
+- Flower Trick
 - Gunk Shot
 - Hydro Pump
 - Moonblast

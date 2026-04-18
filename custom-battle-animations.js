@@ -319,6 +319,37 @@
                 }, 'swing');
             },
         },
+        flowertrick: {
+            anim(scene, [attacker, defender]) {
+                const { pos, rot } = getAttackEffectTransform(attacker);
+                scene.backgroundEffect('#6BBF59', 800, 0.25);
+                attacker.anim({
+                    z: attacker.behind(-8),
+                    time: 140,
+                }, 'swing');
+                playEffekseerMove('flowertrick', pos, rot);
+                attacker.anim({
+                    time: 240,
+                }, 'swing');
+                scene.wait(700);
+                defender.delay(600);
+                defender.anim({
+                    z: defender.behind(10),
+                    time: 120,
+                }, 'swing');
+                defender.anim({
+                    time: 150,
+                }, 'swing');
+                defender.delay(80);
+                defender.anim({
+                    z: defender.behind(5),
+                    time: 100,
+                }, 'swing');
+                defender.anim({
+                    time: 100,
+                }, 'swing');
+            },
+        },
     };
 
     function patchScene(scene) {
