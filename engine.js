@@ -975,6 +975,12 @@ window.init3DScene = async function (container, room) {
             return entry.promise;
         };
 
+        void ensureEfkEffectLoaded(
+            foregroundEfkContext,
+            foregroundEffectCache,
+            `${baseUrl}libs/effects/flowertrick/flowertrick.efkwgd`
+        );
+
         const playEfkEffect = async (ctx, cache, effectUrl, position, rotation, requestEpoch) => {
             if (disposed || effekseerDisabled || room?.battle?.scene !== battleScene || !isBattleActive() || isEffectsSuspended()) return null;
             if (requestEpoch !== effectRequestEpoch) return null;
